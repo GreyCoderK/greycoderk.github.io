@@ -569,8 +569,7 @@ function typeContactSection() {
   const titleEl = document.querySelector('.contact__title-text');
   const cursorEl = document.querySelector('.contact__title-cursor');
   const textEl = document.getElementById('contactText');
-  if (!titleEl) { console.log('contact: titleEl not found'); return; }
-  if (!textEl) { console.log('contact: textEl not found'); return; }
+  if (!titleEl || !textEl) return;
 
   const title = t.contactTitle;
   const desc = t.contactText;
@@ -610,23 +609,18 @@ function typeContactSection() {
 }
 
 function observeContactSection() {
-  const cs = document.getElementById('contact');
-  if (!cs) return;
-  // Check if already in view (e.g. page loaded scrolled down)
-  const rect = cs.getBoundingClientRect();
-  if (rect.top < window.innerHeight && rect.bottom > 0) {
-    typeContactSection();
-    return;
+  function checkContact() {
+    const cs = document.getElementById('contact');
+    if (!cs || contactTyped) return;
+    const rect = cs.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 50) {
+      typeContactSection();
+      window.removeEventListener('scroll', checkContact);
+    }
   }
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        typeContactSection();
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.05, rootMargin: '0px 0px 50px 0px' });
-  observer.observe(cs);
+  window.addEventListener('scroll', checkContact);
+  // Also check immediately in case already in view
+  checkContact();
 }
 
 // ===== THEME TOGGLE =====
