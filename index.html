@@ -3,64 +3,100 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Serge Kossonou — Software Engineer | Backend, APIs, CLI Tools" />
-  <title>Serge Kossonou — Software Engineer</title>
+  <meta name="description" content="Alain Kossonou — Software Engineer | Backend, APIs, CLI Tools" />
+  <meta name="theme-color" content="#0d1117" />
+  <title>Alain Kossonou — Software Engineer</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#128187;</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
+  <!-- SCROLL PROGRESS -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- BACKGROUND GRID -->
+  <div class="bg-grid"></div>
+  <div class="bg-glow bg-glow--1"></div>
+  <div class="bg-glow bg-glow--2"></div>
+
   <!-- NAV -->
-  <nav class="nav">
-    <a href="#" class="nav__logo">SK<span class="accent">.</span></a>
+  <nav class="nav" id="nav">
+    <a href="#" class="nav__logo">
+      <span class="nav__logo-bracket">{</span>AK<span class="nav__logo-bracket">}</span>
+    </a>
     <ul class="nav__links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#about" data-text="About">About</a></li>
+      <li><a href="#experience" data-text="Experience">Experience</a></li>
+      <li><a href="#projects" data-text="Projects">Projects</a></li>
+      <li><a href="#skills" data-text="Skills">Skills</a></li>
+      <li><a href="#contact" data-text="Contact">Contact</a></li>
     </ul>
+    <a href="#contact" class="nav__cta">Hire Me</a>
+    <button class="nav__lang" aria-label="Language">FR</button>
     <button class="nav__toggle" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
   </nav>
 
   <!-- HERO -->
-  <section class="hero">
+  <section class="hero" id="hero">
+    <div class="hero__particles" id="particles"></div>
     <div class="hero__content">
-      <p class="hero__greeting">Hi, I'm</p>
-      <h1 class="hero__name">Serge Kossonou</h1>
-      <h2 class="hero__title">Software Engineer</h2>
+      <div class="hero__badge">Available for opportunities</div>
+      <p class="hero__greeting">&lt;hello world /&gt;</p>
+      <h1 class="hero__name">
+        <span class="hero__name-line">Alain</span>
+        <span class="hero__name-line hero__name-line--gradient">Kossonou<span class="accent">.</span></span>
+      </h1>
+      <h2 class="hero__title">
+        <span class="hero__title-static">I build</span>
+        <span class="hero__title-dynamic" id="typingText"></span>
+        <span class="hero__title-cursor">|</span>
+      </h2>
       <p class="hero__description">
-        5+ years building backend systems, APIs, and CLI tools.
-        Currently working remotely with <strong>Java/Spring Boot</strong>
-        and pursuing an Engineering degree at <strong>CNAM</strong>.
-        Based in Abidjan, Côte d'Ivoire.
+        Software Engineer with <strong>5+ years</strong> of experience crafting backend systems,
+        REST APIs, and developer tools. Currently shipping production code with
+        <strong>Java/Spring Boot</strong> while pursuing an Engineering degree at <strong>CNAM</strong>.
       </p>
       <div class="hero__cta">
-        <a href="#projects" class="btn btn--primary">View Projects</a>
-        <a href="#contact" class="btn btn--outline">Get in Touch</a>
+        <a href="#projects" class="btn btn--primary">
+          <span class="btn__icon">&#9654;</span> View Projects
+        </a>
+        <a href="#contact" class="btn btn--glass">Get in Touch</a>
+      </div>
+      <div class="hero__stats">
+        <div class="hero__stat">
+          <span class="hero__stat-number" data-count="5">0</span><span class="hero__stat-plus">+</span>
+          <span class="hero__stat-label">Years Exp.</span>
+        </div>
+        <div class="hero__stat">
+          <span class="hero__stat-number" data-count="5">0</span><span class="hero__stat-plus">+</span>
+          <span class="hero__stat-label">Companies</span>
+        </div>
+        <div class="hero__stat">
+          <span class="hero__stat-number" data-count="25">0</span><span class="hero__stat-plus">+</span>
+          <span class="hero__stat-label">Projects</span>
+        </div>
       </div>
     </div>
     <div class="hero__terminal">
       <div class="terminal">
         <div class="terminal__bar">
-          <span class="terminal__dot terminal__dot--red"></span>
-          <span class="terminal__dot terminal__dot--yellow"></span>
-          <span class="terminal__dot terminal__dot--green"></span>
-          <span class="terminal__title">serge@dev ~</span>
+          <div class="terminal__dots">
+            <span class="terminal__dot terminal__dot--red"></span>
+            <span class="terminal__dot terminal__dot--yellow"></span>
+            <span class="terminal__dot terminal__dot--green"></span>
+          </div>
+          <span class="terminal__title">museigen@dev ~ zsh</span>
+          <div class="terminal__actions">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+          </div>
         </div>
-        <div class="terminal__body">
-          <p><span class="t-prompt">$</span> whoami</p>
-          <p class="t-output">Software Engineer @ Remote</p>
-          <p><span class="t-prompt">$</span> cat skills.txt</p>
-          <p class="t-output">Java, Spring Boot, Go, Python, TypeScript, NestJS, Docker</p>
-          <p><span class="t-prompt">$</span> cat interests.txt</p>
-          <p class="t-output">Reverse Engineering, Blockchain, ML, WebAssembly</p>
-          <p><span class="t-prompt">$</span> echo $LOCATION</p>
-          <p class="t-output">Abidjan, Côte d'Ivoire</p>
-          <p><span class="t-prompt">$</span> <span class="t-cursor">_</span></p>
+        <div class="terminal__body" id="terminalBody">
+          <!-- Lines will be typed by JS -->
         </div>
       </div>
     </div>
@@ -68,78 +104,122 @@
 
   <!-- ABOUT -->
   <section id="about" class="section">
-    <h2 class="section__title">About Me</h2>
-    <div class="about__content">
-      <p>
-        I started my journey in 2017 with PHP and have since grown into a versatile engineer
-        comfortable across backend frameworks, mobile development, and data science.
-      </p>
-      <p>
-        I've worked at companies like <strong>SaH Analytics</strong>, <strong>KeyOpsTech</strong>,
-        and <strong>Adjemin</strong>, building APIs, fullstack applications, and data pipelines.
-        I also spent a year as Lead Data Analyst at <strong>NaN</strong>, working with Python, R,
-        and machine learning.
-      </p>
-      <p>
-        Today I work remotely as a Java/Spring Boot engineer while studying for my Engineering degree
-        at CNAM. In my free time, I build open-source tools like
-        <a href="https://github.com/GreyCoderK/lore" target="_blank">lore</a> and explore
-        reverse engineering, blockchain, and WebAssembly.
-      </p>
+    <div class="section__header">
+      <span class="section__number">01.</span>
+      <h2 class="section__title">About Me</h2>
+      <div class="section__line"></div>
+    </div>
+    <div class="about__grid">
+      <div class="about__content">
+        <p>
+          I started my journey in <strong>2017</strong> with PHP and quickly expanded into
+          building full systems — from APIs to mobile apps to data pipelines.
+        </p>
+        <p>
+          Over the years, I've shipped products at <strong>SaH Analytics</strong>,
+          <strong>KeyOpsTech</strong>, and <strong>Adjemin</strong>. I also led data
+          analysis at <strong>NaN</strong> using Python, R, and machine learning.
+        </p>
+        <p>
+          Today I write Java/Spring Boot services remotely and study engineering at CNAM.
+          On the side, I build open-source tools like
+          <a href="https://github.com/GreyCoderK/lore" target="_blank">lore</a>
+          and dive into reverse engineering, blockchain, and WebAssembly.
+        </p>
+      </div>
+      <div class="about__highlights">
+        <div class="highlight-card">
+          <div class="highlight-card__icon">&#9881;</div>
+          <h4>Backend-first</h4>
+          <p>APIs, microservices, clean architecture</p>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-card__icon">&#128202;</div>
+          <h4>Data-aware</h4>
+          <p>ML, analytics, data pipelines</p>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-card__icon">&#128272;</div>
+          <h4>Security-minded</h4>
+          <p>Reverse engineering, systems thinking</p>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-card__icon">&#127891;</div>
+          <h4>Always learning</h4>
+          <p>Engineering degree at CNAM</p>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- EXPERIENCE -->
   <section id="experience" class="section section--alt">
-    <h2 class="section__title">Experience</h2>
+    <div class="section__header">
+      <span class="section__number">02.</span>
+      <h2 class="section__title">Experience</h2>
+      <div class="section__line"></div>
+    </div>
     <div class="timeline">
       <div class="timeline__item">
+        <div class="timeline__marker">
+          <div class="timeline__marker-dot"></div>
+          <div class="timeline__marker-pulse"></div>
+        </div>
         <div class="timeline__date">2024 — Present</div>
-        <div class="timeline__content">
+        <div class="timeline__card">
+          <div class="timeline__card-accent"></div>
           <h3>Software Engineer <span class="accent">@ Remote</span></h3>
-          <p>Backend development with Java and Spring Boot.</p>
+          <p>Building and maintaining backend services and APIs in a distributed team environment.</p>
           <div class="tags">
-            <span class="tag">Java</span><span class="tag">Spring Boot</span>
+            <span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">REST APIs</span>
           </div>
         </div>
       </div>
       <div class="timeline__item">
+        <div class="timeline__marker"><div class="timeline__marker-dot"></div></div>
         <div class="timeline__date">2022 — 2024</div>
-        <div class="timeline__content">
+        <div class="timeline__card">
+          <div class="timeline__card-accent"></div>
           <h3>Full-stack Developer <span class="accent">@ SaH Analytics International</span></h3>
-          <p>Built fullstack web applications and internal tools.</p>
+          <p>Built fullstack web applications and internal tools for data analytics operations.</p>
           <div class="tags">
-            <span class="tag">Fullstack</span>
+            <span class="tag">Fullstack</span><span class="tag">Web Apps</span>
           </div>
         </div>
       </div>
       <div class="timeline__item">
+        <div class="timeline__marker"><div class="timeline__marker-dot"></div></div>
         <div class="timeline__date">2021 — 2022</div>
-        <div class="timeline__content">
+        <div class="timeline__card">
+          <div class="timeline__card-accent"></div>
           <h3>API Developer <span class="accent">@ KeyOpsTech</span></h3>
-          <p>Designed and developed REST APIs for the platform.</p>
+          <p>Designed and developed REST APIs powering the platform's core services.</p>
           <div class="tags">
-            <span class="tag">API</span><span class="tag">Backend</span>
+            <span class="tag">API Design</span><span class="tag">Backend</span>
           </div>
         </div>
       </div>
       <div class="timeline__item">
+        <div class="timeline__marker"><div class="timeline__marker-dot"></div></div>
         <div class="timeline__date">2020 — 2021</div>
-        <div class="timeline__content">
+        <div class="timeline__card">
+          <div class="timeline__card-accent"></div>
           <h3>Backend & Mobile Developer <span class="accent">@ Adjemin</span></h3>
-          <p>Mobile apps with Flutter and fullstack web with Laravel.</p>
+          <p>Shipped mobile apps with Flutter and built fullstack web services with Laravel.</p>
           <div class="tags">
-            <span class="tag">Flutter</span><span class="tag">Laravel</span>
+            <span class="tag">Flutter</span><span class="tag">Laravel</span><span class="tag">Mobile</span>
           </div>
         </div>
       </div>
       <div class="timeline__item">
+        <div class="timeline__marker"><div class="timeline__marker-dot"></div></div>
         <div class="timeline__date">2019</div>
-        <div class="timeline__content">
+        <div class="timeline__card">
+          <div class="timeline__card-accent"></div>
           <h3>Lead Data Analyst <span class="accent">@ NaN - Not a Number</span></h3>
-          <p>Data analysis, ML models, and database management with Python, R, and scikit-learn.</p>
+          <p>Led data analysis projects using Python, R, and machine learning models for classification and prediction.</p>
           <div class="tags">
-            <span class="tag">Python</span><span class="tag">R</span><span class="tag">ML</span>
+            <span class="tag">Python</span><span class="tag">R</span><span class="tag">scikit-learn</span><span class="tag">ML</span>
           </div>
         </div>
       </div>
@@ -148,22 +228,55 @@
 
   <!-- PROJECTS -->
   <section id="projects" class="section">
-    <h2 class="section__title">Projects</h2>
-    <div class="projects__grid">
-      <div class="project-card">
-        <div class="project-card__header">
-          <svg class="project-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
-          <a href="https://github.com/GreyCoderK/lore" target="_blank" class="project-card__link" aria-label="GitHub">
-            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+    <div class="section__header">
+      <span class="section__number">03.</span>
+      <h2 class="section__title">Featured Projects</h2>
+      <div class="section__line"></div>
+    </div>
+
+    <!-- Featured project -->
+    <div class="featured-project">
+      <div class="featured-project__info">
+        <span class="featured-project__label">Featured Project</span>
+        <h3 class="featured-project__title">lore</h3>
+        <div class="featured-project__desc">
+          <p>A CLI tool that captures the <em>why</em> behind code changes. Your code knows what — Lore knows why. Built for teams that want to preserve institutional knowledge alongside their codebase.</p>
+        </div>
+        <div class="tags">
+          <span class="tag">Go</span><span class="tag">CLI</span><span class="tag">Developer Tools</span>
+        </div>
+        <div class="featured-project__links">
+          <a href="https://github.com/GreyCoderK/lore" target="_blank" class="project-link" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
           </a>
         </div>
-        <h3 class="project-card__title">lore</h3>
-        <p class="project-card__desc">CLI tool that captures the <em>why</em> behind code changes. Your code knows what — Lore knows why.</p>
-        <div class="tags">
-          <span class="tag">Go</span><span class="tag">CLI</span>
+      </div>
+      <div class="featured-project__visual">
+        <div class="terminal terminal--sm">
+          <div class="terminal__bar">
+            <div class="terminal__dots">
+              <span class="terminal__dot terminal__dot--red"></span>
+              <span class="terminal__dot terminal__dot--yellow"></span>
+              <span class="terminal__dot terminal__dot--green"></span>
+            </div>
+          </div>
+          <div class="terminal__body">
+            <p><span class="t-prompt">$</span> lore why auth.go</p>
+            <p class="t-output t-output--highlight">Switched from JWT to session tokens</p>
+            <p class="t-output">because compliance required server-side</p>
+            <p class="t-output">session invalidation (legal review Q3)</p>
+            <p>&nbsp;</p>
+            <p><span class="t-prompt">$</span> lore log --last 3</p>
+            <p class="t-output">&#9679; auth.go &mdash; session token migration</p>
+            <p class="t-output">&#9679; db.go &mdash; connection pool tuning</p>
+            <p class="t-output">&#9679; api.go &mdash; rate limiter added</p>
+          </div>
         </div>
       </div>
+    </div>
 
+    <!-- Project grid -->
+    <div class="projects__grid">
       <div class="project-card">
         <div class="project-card__header">
           <svg class="project-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
@@ -172,9 +285,10 @@
           </a>
         </div>
         <h3 class="project-card__title">piscine-go</h3>
-        <p class="project-card__desc">100+ coding challenges and algorithms solved in Go during the Zone01 Piscine program.</p>
-        <div class="tags">
-          <span class="tag">Go</span><span class="tag">Algorithms</span>
+        <p class="project-card__desc">100+ coding challenges and algorithms solved in Go. B-trees, linked lists, sorting, recursion, and more.</p>
+        <div class="project-card__footer">
+          <div class="tags"><span class="tag">Go</span><span class="tag">Algorithms</span></div>
+          <div class="project-card__stars">&#9733; 7</div>
         </div>
       </div>
 
@@ -186,9 +300,9 @@
           </a>
         </div>
         <h3 class="project-card__title">api_go</h3>
-        <p class="project-card__desc">REST API in Go with clean architecture — controllers, services, repositories, and middleware.</p>
-        <div class="tags">
-          <span class="tag">Go</span><span class="tag">REST API</span>
+        <p class="project-card__desc">REST API with clean architecture — controllers, services, repositories, middleware, and database layer.</p>
+        <div class="project-card__footer">
+          <div class="tags"><span class="tag">Go</span><span class="tag">REST API</span></div>
         </div>
       </div>
 
@@ -200,9 +314,9 @@
           </a>
         </div>
         <h3 class="project-card__title">scarper</h3>
-        <p class="project-card__desc">Web scrapers for Amazon, Zalando, IKEA, and AliExpress built with Python.</p>
-        <div class="tags">
-          <span class="tag">Python</span><span class="tag">Scraping</span>
+        <p class="project-card__desc">Web scrapers for Amazon, Zalando, IKEA, and AliExpress. Automated data extraction pipelines.</p>
+        <div class="project-card__footer">
+          <div class="tags"><span class="tag">Python</span><span class="tag">Scraping</span></div>
         </div>
       </div>
 
@@ -213,10 +327,10 @@
             <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
           </a>
         </div>
-        <h3 class="project-card__title">ts_gab_system</h3>
-        <p class="project-card__desc">ATM/GAB system simulation — fullstack TypeScript application with backend and frontend.</p>
-        <div class="tags">
-          <span class="tag">TypeScript</span><span class="tag">Fullstack</span>
+        <h3 class="project-card__title">GAB System</h3>
+        <p class="project-card__desc">ATM/GAB banking system simulation — fullstack TypeScript with separate backend and frontend.</p>
+        <div class="project-card__footer">
+          <div class="tags"><span class="tag">TypeScript</span><span class="tag">Fullstack</span></div>
         </div>
       </div>
 
@@ -227,10 +341,10 @@
             <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
           </a>
         </div>
-        <h3 class="project-card__title">DataInsightOnline</h3>
-        <p class="project-card__desc">Data science program — notebooks, analysis, and visualization projects.</p>
-        <div class="tags">
-          <span class="tag">Python</span><span class="tag">Data Science</span>
+        <h3 class="project-card__title">DataInsight</h3>
+        <p class="project-card__desc">Data science notebooks — analysis, visualization, and ML model experiments.</p>
+        <div class="project-card__footer">
+          <div class="tags"><span class="tag">Python</span><span class="tag">Data Science</span></div>
         </div>
       </div>
     </div>
@@ -238,56 +352,57 @@
 
   <!-- SKILLS -->
   <section id="skills" class="section section--alt">
-    <h2 class="section__title">Skills</h2>
+    <div class="section__header">
+      <span class="section__number">04.</span>
+      <h2 class="section__title">Tech Stack</h2>
+      <div class="section__line"></div>
+    </div>
     <div class="skills__grid">
       <div class="skill-group">
+        <div class="skill-group__icon">&#60;/&#62;</div>
         <h3>Languages</h3>
-        <div class="tags">
-          <span class="tag">Java</span>
-          <span class="tag">Go</span>
-          <span class="tag">Python</span>
-          <span class="tag">TypeScript</span>
-          <span class="tag">PHP</span>
-          <span class="tag">Dart</span>
-          <span class="tag">R</span>
+        <div class="skill-items">
+          <span class="skill-item">Java</span>
+          <span class="skill-item">Go</span>
+          <span class="skill-item">Python</span>
+          <span class="skill-item">TypeScript</span>
+          <span class="skill-item">PHP</span>
+          <span class="skill-item">Dart</span>
+          <span class="skill-item">R</span>
         </div>
       </div>
       <div class="skill-group">
-        <h3>Backend & Frameworks</h3>
-        <div class="tags">
-          <span class="tag">Spring Boot</span>
-          <span class="tag">NestJS</span>
-          <span class="tag">Symfony</span>
-          <span class="tag">Laravel</span>
-          <span class="tag">Flask</span>
-          <span class="tag">Express</span>
+        <div class="skill-group__icon">&#9881;</div>
+        <h3>Backend</h3>
+        <div class="skill-items">
+          <span class="skill-item">Spring Boot</span>
+          <span class="skill-item">NestJS</span>
+          <span class="skill-item">Symfony</span>
+          <span class="skill-item">Laravel</span>
+          <span class="skill-item">Flask</span>
+          <span class="skill-item">Express</span>
         </div>
       </div>
       <div class="skill-group">
+        <div class="skill-group__icon">&#128202;</div>
         <h3>Data & ML</h3>
-        <div class="tags">
-          <span class="tag">Pandas</span>
-          <span class="tag">scikit-learn</span>
-          <span class="tag">TensorFlow</span>
-          <span class="tag">OpenCV</span>
+        <div class="skill-items">
+          <span class="skill-item">Pandas</span>
+          <span class="skill-item">scikit-learn</span>
+          <span class="skill-item">TensorFlow</span>
+          <span class="skill-item">OpenCV</span>
         </div>
       </div>
       <div class="skill-group">
+        <div class="skill-group__icon">&#9729;</div>
         <h3>Infrastructure</h3>
-        <div class="tags">
-          <span class="tag">Docker</span>
-          <span class="tag">Linux</span>
-          <span class="tag">PostgreSQL</span>
-          <span class="tag">MongoDB</span>
-          <span class="tag">Redis</span>
-          <span class="tag">Elasticsearch</span>
-          <span class="tag">Firebase</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <h3>Mobile</h3>
-        <div class="tags">
-          <span class="tag">Flutter</span>
+        <div class="skill-items">
+          <span class="skill-item">Docker</span>
+          <span class="skill-item">Linux</span>
+          <span class="skill-item">PostgreSQL</span>
+          <span class="skill-item">MongoDB</span>
+          <span class="skill-item">Redis</span>
+          <span class="skill-item">Elasticsearch</span>
         </div>
       </div>
     </div>
@@ -295,62 +410,91 @@
 
   <!-- EDUCATION -->
   <section id="education" class="section">
-    <h2 class="section__title">Education & Certifications</h2>
-    <div class="timeline">
-      <div class="timeline__item">
-        <div class="timeline__date">In progress</div>
-        <div class="timeline__content">
-          <h3>Engineering Degree <span class="accent">@ CNAM</span></h3>
-          <p>Engineering cycle in computer science.</p>
-        </div>
+    <div class="section__header">
+      <span class="section__number">05.</span>
+      <h2 class="section__title">Education</h2>
+      <div class="section__line"></div>
+    </div>
+    <div class="education__grid">
+      <div class="edu-card edu-card--active">
+        <div class="edu-card__badge">In Progress</div>
+        <h3>Engineering Degree</h3>
+        <p class="edu-card__school">CNAM</p>
+        <p class="edu-card__desc">Engineering cycle in computer science</p>
       </div>
-      <div class="timeline__item">
-        <div class="timeline__date">2021 — 2022</div>
-        <div class="timeline__content">
-          <h3>Data Scientist With Python <span class="accent">@ DataCamp</span></h3>
-        </div>
+      <div class="edu-card">
+        <div class="edu-card__date">2021 — 2022</div>
+        <h3>Data Scientist With Python</h3>
+        <p class="edu-card__school">DataCamp</p>
       </div>
-      <div class="timeline__item">
-        <div class="timeline__date">2018 — 2020</div>
-        <div class="timeline__content">
-          <h3>Junior Developer Certificate <span class="accent">@ NaN - Not a Number</span></h3>
-        </div>
+      <div class="edu-card">
+        <div class="edu-card__date">2018 — 2020</div>
+        <h3>Junior Developer Certificate</h3>
+        <p class="edu-card__school">NaN - Not a Number</p>
       </div>
-      <div class="timeline__item">
-        <div class="timeline__date">2016 — 2018</div>
-        <div class="timeline__content">
-          <h3>BTS in Programming <span class="accent">@ ITES</span></h3>
-        </div>
+      <div class="edu-card">
+        <div class="edu-card__date">2016 — 2018</div>
+        <h3>BTS in Programming</h3>
+        <p class="edu-card__school">ITES</p>
       </div>
     </div>
     <div class="certifications">
       <h3>Certifications</h3>
-      <div class="tags">
-        <span class="tag">Intro to Machine Learning</span>
-        <span class="tag">MTA: JavaScript (98-382)</span>
-        <span class="tag">MTA: HTML5 (98-375)</span>
-        <span class="tag">freeCodeCamp: JS Algorithms</span>
+      <div class="cert-list">
+        <div class="cert-item">
+          <span class="cert-item__check">&#10003;</span>
+          <span>Intro to Machine Learning</span>
+        </div>
+        <div class="cert-item">
+          <span class="cert-item__check">&#10003;</span>
+          <span>MTA: JavaScript (98-382)</span>
+        </div>
+        <div class="cert-item">
+          <span class="cert-item__check">&#10003;</span>
+          <span>MTA: HTML5 Application Dev (98-375)</span>
+        </div>
+        <div class="cert-item">
+          <span class="cert-item__check">&#10003;</span>
+          <span>freeCodeCamp: JS Algorithms & Data Structures</span>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- CONTACT -->
-  <section id="contact" class="section section--alt">
-    <h2 class="section__title">Get in Touch</h2>
-    <p class="contact__text">
-      I'm always open to new opportunities, collaborations, or just a conversation about tech.
-    </p>
-    <div class="contact__links">
-      <a href="mailto:leshodaimekossonou@gmail.com" class="btn btn--primary">Send Email</a>
-      <a href="https://linkedin.com/in/kouam%C3%A9-ma%C3%AFzan-alain-serge-kossonou-234449161" target="_blank" class="btn btn--outline">LinkedIn</a>
-      <a href="https://github.com/GreyCoderK" target="_blank" class="btn btn--outline">GitHub</a>
-      <a href="https://www.datainsightonline.com/profile/leshodaimekossonou/blog-posts" target="_blank" class="btn btn--outline">Blog</a>
+  <section id="contact" class="section section--alt section--contact">
+    <div class="contact__inner">
+      <span class="section__number">06.</span>
+      <h2 class="contact__title">Let's Work Together</h2>
+      <p class="contact__text">
+        I'm open to new opportunities, collaborations, and interesting conversations about technology.
+        Whether you have a project in mind or just want to say hi — my inbox is always open.
+      </p>
+      <a href="mailto:leshodaimekossonou@gmail.com" class="btn btn--primary btn--lg">Say Hello</a>
+      <div class="contact__socials">
+        <a href="https://github.com/GreyCoderK" target="_blank" class="social-link" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        </a>
+        <a href="https://linkedin.com/in/kouam%C3%A9-ma%C3%AFzan-alain-serge-kossonou-234449161" target="_blank" class="social-link" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="https://www.datainsightonline.com/profile/leshodaimekossonou/blog-posts" target="_blank" class="social-link" aria-label="Blog">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        </a>
+      </div>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer class="footer">
-    <p>Built by Serge Kossonou &mdash; 2025</p>
+    <div class="footer__inner">
+      <p class="footer__credit">Designed & Built by <a href="https://github.com/GreyCoderK">Alain Kossonou</a></p>
+      <div class="footer__links">
+        <a href="https://github.com/GreyCoderK" target="_blank">GitHub</a>
+        <a href="https://linkedin.com/in/kouam%C3%A9-ma%C3%AFzan-alain-serge-kossonou-234449161" target="_blank">LinkedIn</a>
+        <a href="mailto:leshodaimekossonou@gmail.com">Email</a>
+      </div>
+    </div>
   </footer>
 
   <script src="script.js"></script>
