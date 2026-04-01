@@ -269,8 +269,8 @@ const revealObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll(
   '.section__header, .about__content, .about__highlights, .highlight-card, ' +
-  '.timeline__item, .project-card, .featured-project, .skill-group, ' +
-  '.edu-card, .cert-item, .contact__inner, .hero__stat'
+  '.timeline__item, .project-card, .featured-project, .skill-group, .skill-icon-group, ' +
+  '.edu-card, .cert-item, .cert-group, .contact__inner, .hero__stat'
 ).forEach((el, i) => {
   el.classList.add('reveal');
   el.style.setProperty('--i', i % 8);

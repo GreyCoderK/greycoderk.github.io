@@ -118,7 +118,7 @@ img{max-width:100%;display:block}
 .section--alt{max-width:100%;background:var(--bg-alt);position:relative}
 .section--alt::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent)}
 .section--alt::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent)}
-.section--alt .section__header,.section--alt .timeline,.section--alt .skills__grid,.section--alt .contact__inner{max-width:1000px;margin-left:auto;margin-right:auto}
+.section--alt .section__header,.section--alt .timeline,.section--alt .skills__grid,.section--alt .skills__icons,.section--alt .contact__inner{max-width:1000px;margin-left:auto;margin-right:auto}
 .section__header{display:flex;align-items:center;gap:1rem;margin-bottom:3.5rem}
 .section__number{font-family:var(--mono);font-size:.9rem;color:var(--accent);font-weight:600}
 .section__title{font-size:1.6rem;font-weight:700;white-space:nowrap;color:var(--text-bright)}
@@ -181,14 +181,22 @@ img{max-width:100%;display:block}
 .project-card__stars{font-family:var(--mono);font-size:.85rem;color:var(--accent);font-weight:500}
 
 /* ===== SKILLS ===== */
-.skills__grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.5rem}
-.skill-group{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1.75rem;transition:var(--transition)}
-.skill-group:hover{border-color:var(--border-hover);transform:translateY(-3px)}
-.skill-group__icon{font-size:1.5rem;margin-bottom:.75rem}
-.skill-group h3{font-size:.95rem;font-weight:700;margin-bottom:1rem;color:var(--text-bright)}
+.skills__icons{display:flex;flex-direction:column;gap:2.5rem}
+.skill-icon-group{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;transition:var(--transition)}
+.skill-icon-group:hover{border-color:var(--border-hover)}
+.skill-icon-group h3{font-size:1rem;font-weight:700;margin-bottom:1.25rem;color:var(--text-bright);padding-bottom:.75rem;border-bottom:1px solid var(--border)}
+.skill-icon-row{display:flex;flex-wrap:wrap;gap:1.5rem}
+.skill-icon-item{display:flex;flex-direction:column;align-items:center;gap:.5rem;transition:var(--transition)}
+.skill-icon-item:hover{transform:translateY(-4px)}
+.skill-icon-item img{width:48px;height:48px;border-radius:10px;transition:var(--transition)}
+.skill-icon-item:hover img{filter:drop-shadow(0 4px 12px rgba(96,165,250,.3))}
+.skill-icon-item span{font-family:var(--mono);font-size:.7rem;color:var(--text-muted);text-align:center;white-space:nowrap}
 .skill-items{display:flex;flex-wrap:wrap;gap:.5rem}
-.skill-item{font-family:var(--mono);font-size:.8rem;color:var(--text-muted);padding:.35rem .85rem;background:rgba(96,165,250,.05);border:1px solid var(--border);border-radius:6px;transition:var(--transition)}
+.skill-item{font-family:var(--mono);font-size:.8rem;color:var(--text-muted);padding:.4rem .9rem;background:rgba(96,165,250,.05);border:1px solid var(--border);border-radius:6px;transition:var(--transition)}
 .skill-item:hover{color:var(--accent);border-color:var(--accent);background:var(--accent-dim)}
+[data-theme="light"] .skill-icon-group{box-shadow:0 1px 3px rgba(0,0,0,.06)}
+[data-theme="light"] .skill-icon-item img{filter:none}
+[data-theme="light"] .skill-icon-item:hover img{filter:drop-shadow(0 4px 12px rgba(37,99,235,.2))}
 
 /* ===== EDUCATION ===== */
 .education__grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1.25rem;margin-bottom:3rem}
@@ -306,7 +314,7 @@ img{max-width:100%;display:block}
   .hero__description{margin-left:auto;margin-right:auto}
   .hero__terminal{min-width:0;width:100%;max-width:100%}
   .section{padding:4rem 1.5rem}
-  .section--alt .section__header,.section--alt .timeline,.section--alt .skills__grid,.section--alt .contact__inner{padding:0 1.5rem}
+  .section--alt .section__header,.section--alt .timeline,.section--alt .skills__grid,.section--alt .skills__icons,.section--alt .contact__inner{padding:0 1.5rem}
   .projects__grid{grid-template-columns:1fr}
   .skills__grid{grid-template-columns:1fr 1fr}
   .education__grid{grid-template-columns:1fr 1fr}
