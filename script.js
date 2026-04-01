@@ -308,56 +308,141 @@ function startTypingHero(words) {
 }
 
 // ===== TERMINAL TYPING =====
-const terminalLines = [
-  { type: 'cmd', text: '$ whoami' },
-  { type: 'out', text: 'Software Engineer @ Remote' },
-  { type: 'cmd', text: '$ cat stack.conf' },
-  { type: 'out', text: 'lang=Java,Go,Python,TypeScript' },
-  { type: 'out', text: 'framework=SpringBoot,NestJS' },
-  { type: 'out', text: 'infra=Docker,PostgreSQL,Redis' },
-  { type: 'cmd', text: '$ cat interests.txt' },
-  { type: 'out', text: 'Reverse Engineering, Blockchain' },
-  { type: 'out', text: 'Machine Learning, WebAssembly' },
-  { type: 'cmd', text: '$ echo $LOCATION' },
-  { type: 'out', text: 'Abidjan, Côte d\'Ivoire' },
-  { type: 'cmd', text: '$ _' }
+const terminalCommands = [
+  {
+    cmd: 'whoami',
+    output: ['Software Engineer @ Remote']
+  },
+  {
+    cmd: 'cat stack.conf',
+    output: [
+      'lang=Java,Go,Python,TypeScript',
+      'framework=SpringBoot,NestJS',
+      'infra=Docker,PostgreSQL,Redis'
+    ]
+  },
+  {
+    cmd: 'cat interests.txt',
+    output: [
+      'Reverse Engineering, Blockchain',
+      'Machine Learning, WebAssembly'
+    ]
+  },
+  {
+    cmd: 'echo $LOCATION',
+    output: ['Abidjan, Côte d\'Ivoire']
+  }
 ];
+
+let terminalTimers = [];
+
+function clearTerminalTimers() {
+  terminalTimers.forEach(t => clearTimeout(t));
+  terminalTimers = [];
+}
 
 function typeTerminal() {
   const body = document.getElementById('terminalBody');
   if (!body) return;
+  clearTerminalTimers();
   body.innerHTML = '';
-  let lineIdx = 0;
 
-  function nextLine() {
-    if (lineIdx >= terminalLines.length) return;
-    const line = terminalLines[lineIdx];
-    const p = document.createElement('p');
-    p.classList.add('t-line');
+  let cmdIdx = 0;
+  let delay = 600;
 
-    if (line.type === 'cmd') {
-      let i = 0;
-      p.classList.add('typing');
-      body.appendChild(p);
-      const interval = setInterval(() => {
-        p.innerHTML = `<span class="t-prompt">${line.text.charAt(0)}</span>${line.text.substring(1, i + 1)}`;
-        i++;
-        if (i >= line.text.length) {
-          clearInterval(interval);
-          p.classList.remove('typing');
-          lineIdx++;
-          setTimeout(nextLine, 300);
-        }
-      }, 50);
-    } else {
-      p.innerHTML = `<span class="t-output">${line.text}</span>`;
-      body.appendChild(p);
-      lineIdx++;
-      setTimeout(nextLine, 100);
+  function scheduleCommand() {
+    if (cmdIdx >= terminalCommands.length) {
+      // Final blinking cursor
+      const tid = setTimeout(() => {
+        const cursorLine = document.createElement('p');
+        cursorLine.innerHTML = '<span class="t-prompt">$</span> <span class="t-cursor">_</span>';
+        body.appendChild(cursorLine);
+      }, delay);
+      terminalTimers.push(tid);
+      return;
     }
-    body.scrollTop = body.scrollHeight;
+
+    const command = terminalCommands[cmdIdx];
+    const cmdText = command.cmd;
+
+    // Create the command line element
+    const cmdLine = document.createElement('p');
+    cmdLine.innerHTML = '<span class="t-prompt">$</span> ';
+    cmdLine.classList.add('t-line');
+
+    // Add blinking cursor span that will be updated
+    const cursorSpan = document.createElement('span');
+    cursorSpan.className = 't-typing-cursor';
+    cursorSpan.textContent = '|';
+    cmdLine.appendChild(cursorSpan);
+
+    // Append line to body
+    const tid1 = setTimeout(() => {
+      body.appendChild(cmdLine);
+      body.scrollTop = body.scrollHeight;
+
+      // Type each character of the command
+      let charIdx = 0;
+      function typeChar() {
+        if (charIdx < cmdText.length) {
+          // Insert character before cursor
+          const charNode = document.createTextNode(cmdText[charIdx]);
+          cmdLine.insertBefore(charNode, cursorSpan);
+          charIdx++;
+          body.scrollTop = body.scrollHeight;
+          const charDelay = 40 + Math.random() * 60; // Variable speed for realism
+          const tid = setTimeout(typeChar, charDelay);
+          terminalTimers.push(tid);
+        } else {
+          // Command fully typed — remove cursor, show output
+          cursorSpan.remove();
+
+          const tid = setTimeout(() => {
+            // Show output lines one by one
+            let outIdx = 0;
+            function showOutput() {
+              if (outIdx < command.output.length) {
+                const outLine = document.createElement('p');
+                outLine.className = 't-output';
+                outLine.textContent = command.output[outIdx];
+                // Fade in effect
+                outLine.style.opacity = '0';
+                outLine.style.transform = 'translateX(-5px)';
+                outLine.style.transition = 'opacity 0.3s, transform 0.3s';
+                body.appendChild(outLine);
+                // Trigger animation
+                requestAnimationFrame(() => {
+                  outLine.style.opacity = '1';
+                  outLine.style.transform = 'translateX(0)';
+                });
+                body.scrollTop = body.scrollHeight;
+                outIdx++;
+                const tid = setTimeout(showOutput, 150);
+                terminalTimers.push(tid);
+              } else {
+                // Add empty line between commands
+                const spacer = document.createElement('p');
+                spacer.innerHTML = '&nbsp;';
+                body.appendChild(spacer);
+                cmdIdx++;
+                const tid = setTimeout(scheduleCommand, 500);
+                terminalTimers.push(tid);
+              }
+            }
+            showOutput();
+          }, 200);
+          terminalTimers.push(tid);
+        }
+      }
+      // Start typing after a small delay
+      const tid = setTimeout(typeChar, 200);
+      terminalTimers.push(tid);
+    }, delay);
+    terminalTimers.push(tid1);
+    delay = 0; // Only first command has initial delay
   }
-  setTimeout(nextLine, 800);
+
+  scheduleCommand();
 }
 
 // ===== PARTICLES =====

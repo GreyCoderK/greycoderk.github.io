@@ -98,8 +98,9 @@ img{max-width:100%;display:block}
 .t-output{color:var(--text-muted);margin-bottom:.25rem}
 .t-output--highlight{color:var(--accent3)}
 .t-line{overflow:hidden;white-space:nowrap}
-.t-line.typing{border-right:2px solid var(--accent);animation:cursor-blink .7s step-end infinite}
-@keyframes cursor-blink{0%,100%{border-color:var(--accent)}50%{border-color:transparent}}
+.t-typing-cursor{color:var(--accent);animation:cursor-blink .6s step-end infinite;font-weight:300;margin-left:1px}
+.t-cursor{color:var(--accent);animation:cursor-blink .6s step-end infinite}
+@keyframes cursor-blink{0%,100%{opacity:1}50%{opacity:0}}
 
 /* ===== BUTTONS ===== */
 .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 2rem;border-radius:var(--radius-sm);font-weight:600;font-size:.95rem;transition:var(--transition);cursor:pointer;border:none;position:relative;overflow:hidden}
