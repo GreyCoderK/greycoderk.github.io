@@ -584,25 +584,32 @@ function typeContactSection() {
   const title = t.contactTitle;
   const desc = t.contactText;
   let i = 0;
+  let j = 0;
 
-  // Type the title
   function typeTitle() {
     if (i < title.length) {
       titleEl.textContent += title[i];
       i++;
       setTimeout(typeTitle, 60 + Math.random() * 40);
     } else {
-      // Hide cursor after title is done
+      // Move cursor to description
       if (cursorEl) cursorEl.style.display = 'none';
-      // Then fade in the description
-      textEl.style.opacity = '0';
-      textEl.style.transform = 'translateY(10px)';
-      textEl.style.transition = 'opacity .8s ease, transform .8s ease';
-      textEl.innerHTML = desc;
-      requestAnimationFrame(() => {
-        textEl.style.opacity = '1';
-        textEl.style.transform = 'translateY(0)';
-      });
+      // Start typing description
+      textEl.innerHTML = '<span class="contact__text-typed"></span><span class="contact__title-cursor">|</span>';
+      const typedSpan = textEl.querySelector('.contact__text-typed');
+      const descCursor = textEl.querySelector('.contact__title-cursor');
+      setTimeout(() => typeDesc(typedSpan, descCursor), 300);
+    }
+  }
+
+  function typeDesc(typedSpan, descCursor) {
+    if (j < desc.length) {
+      typedSpan.textContent += desc[j];
+      j++;
+      const speed = desc[j - 1] === '.' || desc[j - 1] === ',' || desc[j - 1] === '—' ? 200 : 20 + Math.random() * 25;
+      setTimeout(() => typeDesc(typedSpan, descCursor), speed);
+    } else {
+      if (descCursor) descCursor.style.display = 'none';
     }
   }
 
