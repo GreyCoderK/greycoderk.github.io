@@ -267,13 +267,58 @@ const revealObserver = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
+// Default reveal (fade up)
 document.querySelectorAll(
-  '.section__header, .about__content, .about__highlights, .highlight-card, ' +
-  '.timeline__item, .project-card, .featured-project, .skill-group, .skill-icon-group, ' +
-  '.edu-card, .cert-item, .cert-group, .contact__inner, .hero__stat'
-).forEach((el, i) => {
+  '.section__header, .about__content, .contact__inner, .hero__stat'
+).forEach((el) => {
   el.classList.add('reveal');
-  el.style.setProperty('--i', i % 8);
+  revealObserver.observe(el);
+});
+
+// Slide from left for timeline items (odd)
+document.querySelectorAll('.timeline__item').forEach((el, i) => {
+  el.classList.add(i % 2 === 0 ? 'reveal-left' : 'reveal-right');
+  el.style.transitionDelay = (i * 0.1) + 's';
+  revealObserver.observe(el);
+});
+
+// Scale up for project cards
+document.querySelectorAll('.project-card, .featured-project').forEach((el, i) => {
+  el.classList.add('reveal-scale');
+  el.style.transitionDelay = (i * 0.08) + 's';
+  revealObserver.observe(el);
+});
+
+// Rotate in for highlight cards
+document.querySelectorAll('.highlight-card').forEach((el, i) => {
+  el.classList.add('reveal-rotate');
+  el.style.transitionDelay = (i * 0.1) + 's';
+  revealObserver.observe(el);
+});
+
+// Slide from left for skill groups
+document.querySelectorAll('.skill-icon-group').forEach((el, i) => {
+  el.classList.add('reveal-left');
+  el.style.transitionDelay = (i * 0.1) + 's';
+  revealObserver.observe(el);
+});
+
+// Slide from right for about highlights
+document.querySelectorAll('.about__highlights').forEach((el) => {
+  el.classList.add('reveal-right');
+  revealObserver.observe(el);
+});
+
+// Fade up for edu cards and cert groups
+document.querySelectorAll('.edu-card').forEach((el, i) => {
+  el.classList.add('reveal-scale');
+  el.style.transitionDelay = (i * 0.08) + 's';
+  revealObserver.observe(el);
+});
+
+document.querySelectorAll('.cert-group').forEach((el, i) => {
+  el.classList.add('reveal');
+  el.style.transitionDelay = (i * 0.1) + 's';
   revealObserver.observe(el);
 });
 
