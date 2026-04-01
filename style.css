@@ -203,11 +203,15 @@ img{max-width:100%;display:block}
 .edu-card__desc{font-size:.8rem;color:var(--text-muted);margin-top:.5rem}
 
 .certifications{margin-top:1rem}
-.certifications h3{font-size:1.1rem;font-weight:700;margin-bottom:1.25rem;color:var(--text-bright)}
-.cert-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:.75rem}
-.cert-item{display:flex;align-items:center;gap:.75rem;padding:.75rem 1rem;background:var(--surface);border:1px solid var(--border);border-radius:8px;font-size:.88rem;color:var(--text-muted);transition:var(--transition)}
+.certifications>h3{font-size:1.1rem;font-weight:700;margin-bottom:1.5rem;color:var(--text-bright)}
+.cert-group{margin-bottom:1.5rem}
+.cert-group__title{font-size:.85rem;font-weight:600;color:var(--accent);font-family:var(--mono);text-transform:uppercase;letter-spacing:1px;margin-bottom:.75rem;padding-left:.5rem;border-left:2px solid var(--accent)}
+.cert-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:.5rem}
+.cert-item{display:flex;align-items:center;gap:.75rem;padding:.6rem 1rem;background:var(--surface);border:1px solid var(--border);border-radius:8px;font-size:.85rem;color:var(--text-muted);transition:var(--transition)}
 .cert-item:hover{border-color:var(--border-hover)}
-.cert-item__check{color:var(--accent3);font-weight:700;font-size:1rem}
+.cert-item__check{color:var(--accent3);font-weight:700;font-size:.9rem;flex-shrink:0}
+.cert-item span:nth-child(2){flex:1}
+.cert-item__date{font-family:var(--mono);font-size:.7rem;color:var(--text-muted);opacity:.6;flex-shrink:0}
 
 /* ===== CONTACT ===== */
 .section--contact{text-align:center}
