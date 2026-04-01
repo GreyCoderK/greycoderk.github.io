@@ -181,29 +181,19 @@ function applyTranslations(lang) {
   setHTML('.featured-project__label', t.featuredLabel);
   setHTML('.featured-project__desc p', t.loreDesc);
 
-  // Contact - re-trigger typing on language switch
+  // Contact - reset and re-trigger typing
   const contactTitleText = document.querySelector('.contact__title-text');
   const contactCursor = document.querySelector('.contact__title-cursor');
   if (contactTitleText) {
     contactTitleText.textContent = '';
-    if (contactCursor) contactCursor.style.display = '';
-    const contactTextEl = document.getElementById('contactText');
-    if (contactTextEl) contactTextEl.innerHTML = '';
-    contactTyped = false;
-    // Re-observe to re-trigger
-    const cs = document.getElementById('contact');
-    if (cs) {
-      const co = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            typeContactSection();
-            co.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.3 });
-      co.observe(cs);
+    if (contactCursor) {
+      contactCursor.style.display = '';
     }
   }
+  const contactTextEl = document.getElementById('contactText');
+  if (contactTextEl) contactTextEl.innerHTML = '';
+  contactTyped = false;
+  observeContactSection();
   setHTML('.section--contact .btn--primary', t.sayHello);
 
   // Footer
@@ -579,7 +569,8 @@ function typeContactSection() {
   const titleEl = document.querySelector('.contact__title-text');
   const cursorEl = document.querySelector('.contact__title-cursor');
   const textEl = document.getElementById('contactText');
-  if (!titleEl || !textEl) return;
+  if (!titleEl) { console.log('contact: titleEl not found'); return; }
+  if (!textEl) { console.log('contact: textEl not found'); return; }
 
   const title = t.contactTitle;
   const desc = t.contactText;
@@ -618,18 +609,24 @@ function typeContactSection() {
   setTimeout(typeTitle, 300);
 }
 
-// Observe the contact section
-const contactSection = document.getElementById('contact');
-if (contactSection) {
-  const contactObserver = new IntersectionObserver((entries) => {
+function observeContactSection() {
+  const cs = document.getElementById('contact');
+  if (!cs) return;
+  // Check if already in view (e.g. page loaded scrolled down)
+  const rect = cs.getBoundingClientRect();
+  if (rect.top < window.innerHeight && rect.bottom > 0) {
+    typeContactSection();
+    return;
+  }
+  const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         typeContactSection();
-        contactObserver.unobserve(entry.target);
+        observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.3 });
-  contactObserver.observe(contactSection);
+  }, { threshold: 0.05, rootMargin: '0px 0px 50px 0px' });
+  observer.observe(cs);
 }
 
 // ===== THEME TOGGLE =====
@@ -654,4 +651,5 @@ document.addEventListener('DOMContentLoaded', () => {
   createParticles();
   typeTerminal();
   applyTranslations(currentLang);
+  observeContactSection();
 });
