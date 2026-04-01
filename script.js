@@ -129,7 +129,7 @@ function applyTranslations(lang) {
   }
   setHTML('.hero__greeting', t.greeting);
   setHTML('.hero__name-line:first-child', t.firstName);
-  setHTML('.hero__name-line--gradient', t.lastName);
+  setHTML('.hero__name-line--gradient', t.lastName + '<span class="accent">.</span>');
   setHTML('.hero__title-static', t.titleStatic);
   setHTML('.hero__description', t.heroDesc);
   setHTML('.hero__cta .btn--primary', `<span class="btn__icon">&#9654;</span> ${t.viewProjects}`);
@@ -197,12 +197,16 @@ function applyTranslations(lang) {
   setHTML('.edu-card__desc', t.engDesc);
   setHTML('.certifications h3', t.certTitle);
 
-  // Lang button
+  // Lang button & html lang
   const langBtn = document.querySelector('.nav__lang');
   if (langBtn) langBtn.textContent = lang === 'en' ? 'FR' : 'EN';
+  document.documentElement.lang = lang;
 
   // Restart typing
   startTypingHero(t.typingWords);
+
+  // Restart terminal with correct language
+  typeTerminal();
 }
 
 // ===== MOBILE NAV =====
