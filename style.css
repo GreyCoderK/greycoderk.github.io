@@ -226,7 +226,10 @@ svg.cert-group__logo{color:var(--accent)}
 /* ===== CONTACT ===== */
 .section--contact{text-align:center}
 .contact__inner{max-width:600px;margin:0 auto;padding:2rem 0}
-.contact__title{font-size:clamp(2rem,4vw,3rem);font-weight:800;margin:.75rem 0 1.5rem;color:var(--text-bright);letter-spacing:-1px}
+.contact__title{font-size:clamp(2rem,4vw,3rem);font-weight:800;margin:.75rem 0 1.5rem;color:var(--text-bright);letter-spacing:-1px;min-height:1.2em}
+.contact__title-text{background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.contact__title-cursor{color:var(--accent);animation:blink .7s step-end infinite;font-weight:300;margin-left:2px}
+.contact__text{min-height:3.5em}
 .contact__text{color:var(--text-muted);font-size:1.05rem;margin-bottom:2.5rem;line-height:1.8}
 .contact__socials{display:flex;justify-content:center;gap:1.25rem;margin-top:2.5rem}
 .social-link{color:var(--text-muted);padding:.75rem;border-radius:var(--radius-sm);border:1px solid var(--border);transition:var(--transition);display:inline-flex}

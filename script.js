@@ -181,9 +181,29 @@ function applyTranslations(lang) {
   setHTML('.featured-project__label', t.featuredLabel);
   setHTML('.featured-project__desc p', t.loreDesc);
 
-  // Contact
-  setHTML('.contact__title', t.contactTitle);
-  setHTML('.contact__text', t.contactText);
+  // Contact - re-trigger typing on language switch
+  const contactTitleText = document.querySelector('.contact__title-text');
+  const contactCursor = document.querySelector('.contact__title-cursor');
+  if (contactTitleText) {
+    contactTitleText.textContent = '';
+    if (contactCursor) contactCursor.style.display = '';
+    const contactTextEl = document.getElementById('contactText');
+    if (contactTextEl) contactTextEl.innerHTML = '';
+    contactTyped = false;
+    // Re-observe to re-trigger
+    const cs = document.getElementById('contact');
+    if (cs) {
+      const co = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            typeContactSection();
+            co.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+      co.observe(cs);
+    }
+  }
   setHTML('.section--contact .btn--primary', t.sayHello);
 
   // Footer
@@ -547,6 +567,63 @@ document.querySelector('.nav__lang')?.addEventListener('click', () => {
   localStorage.setItem('lang', currentLang);
   applyTranslations(currentLang);
 });
+
+// ===== CONTACT TYPING ANIMATION =====
+let contactTyped = false;
+
+function typeContactSection() {
+  if (contactTyped) return;
+  contactTyped = true;
+
+  const t = translations[currentLang];
+  const titleEl = document.querySelector('.contact__title-text');
+  const cursorEl = document.querySelector('.contact__title-cursor');
+  const textEl = document.getElementById('contactText');
+  if (!titleEl || !textEl) return;
+
+  const title = t.contactTitle;
+  const desc = t.contactText;
+  let i = 0;
+
+  // Type the title
+  function typeTitle() {
+    if (i < title.length) {
+      titleEl.textContent += title[i];
+      i++;
+      setTimeout(typeTitle, 60 + Math.random() * 40);
+    } else {
+      // Hide cursor after title is done
+      if (cursorEl) cursorEl.style.display = 'none';
+      // Then fade in the description
+      textEl.style.opacity = '0';
+      textEl.style.transform = 'translateY(10px)';
+      textEl.style.transition = 'opacity .8s ease, transform .8s ease';
+      textEl.innerHTML = desc;
+      requestAnimationFrame(() => {
+        textEl.style.opacity = '1';
+        textEl.style.transform = 'translateY(0)';
+      });
+    }
+  }
+
+  titleEl.textContent = '';
+  textEl.innerHTML = '';
+  setTimeout(typeTitle, 300);
+}
+
+// Observe the contact section
+const contactSection = document.getElementById('contact');
+if (contactSection) {
+  const contactObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        typeContactSection();
+        contactObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  contactObserver.observe(contactSection);
+}
 
 // ===== THEME TOGGLE =====
 let currentTheme = localStorage.getItem('theme') || 'dark';
