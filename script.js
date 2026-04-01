@@ -414,8 +414,25 @@ document.querySelector('.nav__lang')?.addEventListener('click', () => {
   applyTranslations(currentLang);
 });
 
+// ===== THEME TOGGLE =====
+let currentTheme = localStorage.getItem('theme') || 'dark';
+
+function applyTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem('theme', theme);
+  currentTheme = theme;
+  // Update meta theme-color
+  const meta = document.querySelector('meta[name="theme-color"]');
+  if (meta) meta.content = theme === 'light' ? '#f8fafc' : '#0a0e17';
+}
+
+document.getElementById('themeToggle')?.addEventListener('click', () => {
+  applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+});
+
 // ===== INIT =====
 document.addEventListener('DOMContentLoaded', () => {
+  applyTheme(currentTheme);
   createParticles();
   typeTerminal();
   applyTranslations(currentLang);
