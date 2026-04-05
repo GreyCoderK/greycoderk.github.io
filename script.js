@@ -6,7 +6,7 @@ const translations = {
     firstName: 'Alain',
     lastName: 'Kossonou',
     titleStatic: 'I build',
-    heroDesc: 'Software Engineer with <strong>5+ years</strong> of experience crafting backend systems, REST APIs, and developer tools. Currently shipping production code with <strong>Java/Spring Boot</strong> while pursuing an Engineering degree at <strong>CNAM</strong>.',
+    heroDesc: 'Software Engineer with <strong>5+ years</strong> of experience crafting backend systems, REST APIs, and developer tools. Currently building fintech products at <strong>Push-CI</strong> with <strong>Java/Spring Boot</strong> while pursuing an Engineering degree at <strong>CNAM</strong>.',
     viewProjects: 'View Projects',
     getInTouch: 'Get in Touch',
     hireMe: 'Hire Me',
@@ -23,15 +23,17 @@ const translations = {
     // About
     aboutP1: 'I started my journey in <strong>2017</strong> with PHP and quickly expanded into building full systems — from APIs to mobile apps to data pipelines.',
     aboutP2: 'Over the years, I\'ve shipped products at <strong>SaH Analytics</strong>, <strong>KeyOpsTech</strong>, and <strong>Adjemin</strong>. I also led data analysis at <strong>NaN</strong> using Python, R, and machine learning.',
-    aboutP3: 'Today I write Java/Spring Boot services remotely and study engineering at CNAM. On the side, I build open-source tools like <a href="https://github.com/GreyCoderK/lore" target="_blank">lore</a> and dive into reverse engineering, blockchain, and WebAssembly.',
+    aboutP3: 'Today I build fintech products at <strong>Push-CI</strong> with Java/Spring Boot and study engineering at CNAM. On the side, I build open-source tools like <a href="https://github.com/GreyCoderK/lore" target="_blank">lore</a> and dive into reverse engineering, blockchain, and WebAssembly.',
     // Highlights
     h1Title: 'Backend-first', h1Desc: 'APIs, microservices, clean architecture',
     h2Title: 'Data-aware', h2Desc: 'ML, analytics, data pipelines',
     h3Title: 'Security-minded', h3Desc: 'Reverse engineering, systems thinking',
     h4Title: 'Always learning', h4Desc: 'Engineering degree at CNAM',
     // Experience
+    exp0Title: 'Software Engineer <span class="accent">@ Push-CI</span>',
+    exp0Desc: 'Building fintech products — payment systems, APIs, and backend services for the Ivorian market.',
     exp1Title: 'Software Engineer <span class="accent">@ Remote</span>',
-    exp1Desc: 'Building and maintaining backend services and APIs in a distributed team environment.',
+    exp1Desc: 'Backend development with PHP/Laravel in a distributed team environment.',
     exp2Title: 'Full-stack Developer <span class="accent">@ SaH Analytics International</span>',
     exp2Desc: 'Built fullstack web applications and internal tools for data analytics operations.',
     exp3Title: 'API Developer <span class="accent">@ KeyOpsTech / KOTscan</span>',
@@ -66,7 +68,7 @@ const translations = {
     firstName: 'Alain',
     lastName: 'Kossonou',
     titleStatic: 'Je construis',
-    heroDesc: 'Ingénieur logiciel avec <strong>5+ ans</strong> d\'expérience dans la conception de systèmes backend, d\'APIs REST et d\'outils pour développeurs. Actuellement en production avec <strong>Java/Spring Boot</strong> tout en préparant un diplôme d\'ingénieur au <strong>CNAM</strong>.',
+    heroDesc: 'Ingénieur logiciel avec <strong>5+ ans</strong> d\'expérience dans la conception de systèmes backend, d\'APIs REST et d\'outils pour développeurs. Actuellement chez <strong>Push-CI</strong> en <strong>Java/Spring Boot</strong> tout en préparant un diplôme d\'ingénieur au <strong>CNAM</strong>.',
     viewProjects: 'Voir les Projets',
     getInTouch: 'Me Contacter',
     hireMe: 'Recruter',
@@ -81,13 +83,15 @@ const translations = {
     contact: 'Contact',
     aboutP1: 'J\'ai commencé mon parcours en <strong>2017</strong> avec PHP et j\'ai rapidement évolué vers la construction de systèmes complets — des APIs aux applications mobiles en passant par les pipelines de données.',
     aboutP2: 'Au fil des années, j\'ai livré des produits chez <strong>SaH Analytics</strong>, <strong>KeyOpsTech</strong> et <strong>Adjemin</strong>. J\'ai également dirigé l\'analyse de données chez <strong>NaN</strong> avec Python, R et le machine learning.',
-    aboutP3: 'Aujourd\'hui, je développe des services Java/Spring Boot en remote et j\'étudie l\'ingénierie au CNAM. En parallèle, je construis des outils open-source comme <a href="https://github.com/GreyCoderK/lore" target="_blank">lore</a> et j\'explore le reverse engineering, la blockchain et WebAssembly.',
+    aboutP3: 'Aujourd\'hui, je construis des produits fintech chez <strong>Push-CI</strong> avec Java/Spring Boot et j\'étudie l\'ingénierie au CNAM. En parallèle, je construis des outils open-source comme <a href="https://github.com/GreyCoderK/lore" target="_blank">lore</a> et j\'explore le reverse engineering, la blockchain et WebAssembly.',
     h1Title: 'Backend-first', h1Desc: 'APIs, microservices, architecture propre',
     h2Title: 'Data-aware', h2Desc: 'ML, analytics, pipelines de données',
     h3Title: 'Sécurité', h3Desc: 'Reverse engineering, pensée systèmes',
     h4Title: 'Toujours apprendre', h4Desc: 'Diplôme d\'ingénieur au CNAM',
+    exp0Title: 'Ingénieur Logiciel <span class="accent">@ Push-CI</span>',
+    exp0Desc: 'Construction de produits fintech — systèmes de paiement, APIs et services backend pour le marché ivoirien.',
     exp1Title: 'Ingénieur Logiciel <span class="accent">@ Remote</span>',
-    exp1Desc: 'Développement et maintenance de services backend et APIs dans une équipe distribuée.',
+    exp1Desc: 'Développement backend avec PHP/Laravel dans une équipe distribuée.',
     exp2Title: 'Développeur Full-stack <span class="accent">@ SaH Analytics International</span>',
     exp2Desc: 'Construction d\'applications web fullstack et outils internes pour les opérations d\'analyse de données.',
     exp3Title: 'Développeur API <span class="accent">@ KeyOpsTech / KOTscan</span>',
@@ -167,8 +171,8 @@ function applyTranslations(lang) {
   // Experience
   const expItems = document.querySelectorAll('.timeline__card');
   const expData = [
-    [t.exp1Title, t.exp1Desc],[t.exp2Title, t.exp2Desc],[t.exp3Title, t.exp3Desc],
-    [t.exp4Title, t.exp4Desc],[t.exp5Title, t.exp5Desc]
+    [t.exp0Title, t.exp0Desc],[t.exp1Title, t.exp1Desc],[t.exp2Title, t.exp2Desc],
+    [t.exp3Title, t.exp3Desc],[t.exp4Title, t.exp4Desc],[t.exp5Title, t.exp5Desc]
   ];
   expItems.forEach((card, i) => {
     if (expData[i]) {
@@ -370,7 +374,7 @@ function startTypingHero(words) {
 const terminalCommands = [
   {
     cmd: 'whoami',
-    output: ['Software Engineer @ Remote']
+    output: ['Software Engineer @ Push-CI']
   },
   {
     cmd: 'cat stack.conf',
