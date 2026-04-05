@@ -624,7 +624,7 @@ function observeContactSection() {
 }
 
 // ===== THEME TOGGLE =====
-let currentTheme = localStorage.getItem('theme') || 'dark';
+let currentTheme = localStorage.getItem('theme') || 'light';
 
 function applyTheme(theme) {
   document.documentElement.setAttribute('data-theme', theme);
@@ -632,7 +632,7 @@ function applyTheme(theme) {
   currentTheme = theme;
   // Update meta theme-color
   const meta = document.querySelector('meta[name="theme-color"]');
-  if (meta) meta.content = theme === 'light' ? '#f8fafc' : '#0a0e17';
+  if (meta) meta.content = theme === 'dark' ? '#0a0e17' : '#f5f3f0';
 }
 
 document.getElementById('themeToggle')?.addEventListener('click', () => {
